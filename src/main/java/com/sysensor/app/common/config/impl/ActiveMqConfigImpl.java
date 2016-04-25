@@ -36,6 +36,7 @@ public class ActiveMqConfigImpl implements JMSBrokerConfig {
 
 	private final BrokerContext brokerContext;
 	private final boolean START_EMBEDDED_BROKER;
+	private final boolean ENABLE_JMS_PLAINTEXT;
 	private final String ACTIVEMQ_HOST_NAME;
 	private final String ACTIVEMQ_TCP_PORT;
 	private final String ACTIVEMQ_STOMP_PORT;
@@ -55,6 +56,7 @@ public class ActiveMqConfigImpl implements JMSBrokerConfig {
 	private ActiveMqConfigImpl() {
 
 		START_EMBEDDED_BROKER = Boolean.valueOf(System.getProperty("START_EMBEDDED_BROKER"));
+		ENABLE_JMS_PLAINTEXT = Boolean.valueOf(System.getProperty("ENABLE_JMS_PLAINTEXT"));
 		ACTIVEMQ_HOST_NAME = System.getProperty("ACTIVEMQ_HOST_NAME");
 		ACTIVEMQ_TCP_PORT = System.getProperty("ACTIVEMQ_TCP_PORT");
 		ACTIVEMQ_STOMP_PORT = System.getProperty("ACTIVEMQ_STOMP_PORT");
@@ -64,7 +66,7 @@ public class ActiveMqConfigImpl implements JMSBrokerConfig {
 		startActiveMqBroker();
 		brokerContext = BrokerContextBuilder.getInstance().startEmbeddedBroker(START_EMBEDDED_BROKER)
 				.hostName(ACTIVEMQ_HOST_NAME).tcpPort(ACTIVEMQ_TCP_PORT).stompPort(ACTIVEMQ_STOMP_PORT)
-				.userName(ACTIVEMQ_USER_NAME).passWord(ACTIVEMQ_PASSWORD).build();
+				.userName(ACTIVEMQ_USER_NAME).passWord(ACTIVEMQ_PASSWORD).enableJMSPlainText(ENABLE_JMS_PLAINTEXT).build();
 	}
 
 	public ConnectionFactory amqConnectionFactory() {

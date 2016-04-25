@@ -1,7 +1,5 @@
 package com.sysensor.app.config;
 
-import javax.management.j2ee.statistics.JMSConnectionStats;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
@@ -28,7 +26,7 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 	@Autowired
 	ContextConfig contextConfig;
 	@Autowired
-  BrokerContext brokerContext;
+	BrokerContext brokerContext;
 
 	// TODO: Have to put the ENABLE_SIMPLE_BROKER property
 	boolean enableSimpleBroker = false;
@@ -42,8 +40,7 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 			StompBrokerRelayRegistration brokerRegistration = config.enableStompBrokerRelay("/queue", "/topic")
 					.setSystemLogin(brokerContext.USER_NAME).setSystemPasscode(brokerContext.PASSWORD)
 					.setClientLogin(brokerContext.USER_NAME).setClientPasscode(brokerContext.PASSWORD)
-					.setRelayHost(brokerContext.HOST_NAME)
-					.setRelayPort(Integer.valueOf(brokerContext.STOMP_PORT));
+					.setRelayHost(brokerContext.HOST_NAME).setRelayPort(Integer.valueOf(brokerContext.STOMP_PORT));
 			if (!brokerVirtualHost.equals("")) {
 				brokerRegistration.setVirtualHost(brokerVirtualHost);
 			}

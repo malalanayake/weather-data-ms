@@ -12,14 +12,14 @@ package com.sysensor.app.controller.json;
 public class JsonViews {
 
 	public static class AppUser {
-	
+
 	};
 
 	public static class AppAdmin extends AppUser {
-		
+
 	};
-	
+
 	public static class Unauthorized {
-		
+
 	};
 }

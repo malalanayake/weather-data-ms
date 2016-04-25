@@ -9,6 +9,15 @@ import com.sysensor.app.common.config.DBConfig;
 import com.sysensor.app.common.config.model.DBContext;
 import com.sysensor.app.common.config.model.DBContext.DBContextBuilder;
 
+/**
+ * 
+ * Distibution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
+ * 
+ * @author dmalalan
+ * @created Apr 25, 2016 7:59:40 AM
+ * 
+ * @blog https://malalanayake.wordpress.com/
+ */
 public class DBConfigImpl implements DBConfig {
 
 	private Logger log = Logger.getLogger(getClass().getName());

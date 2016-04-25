@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.sysensor.app.common.messaging.impl.GenericMessageService;
-import com.sysensor.app.common.messaging.model.SysensorContainer;
 import com.sysensor.app.model.AppUser;
 import com.sysensor.app.repository.AppUserRepository;
+import com.sysensor.app.service.messaging.LogMessageService;
 
 /**
  * 
@@ -31,9 +30,9 @@ import com.sysensor.app.repository.AppUserRepository;
 public class AppUserController {
 
 	private AppUserRepository repository;
-	
+
 	@Autowired
-	private GenericMessageService genericMessageService;
+	private LogMessageService logMessageService;
 
 	@Autowired
 	public AppUserController(AppUserRepository repository) {
@@ -45,16 +44,17 @@ public class AppUserController {
 		List<AppUser> appUserList = repository.findAll();
 		model.addAttribute("appUserList", appUserList);
 		model.addAttribute("appUserNew", new AppUser());
-		genericMessageService.pushToTopic("Test", new SysensorContainer());
+		logMessageService.publishLogs("Test Logs");
+
 		return "appUser";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String insertData(ModelMap model, @ModelAttribute("appUserNew") @Valid AppUser record,
-			BindingResult result) {
+	public String insertData(ModelMap model, @ModelAttribute("appUserNew") @Valid AppUser record, BindingResult result) {
 		if (!result.hasErrors()) {
 			repository.save(record);
 		}
+
 		return list(model);
 	}
 }

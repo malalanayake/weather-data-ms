@@ -4,10 +4,9 @@ import javax.jms.ConnectionFactory;
 import javax.sql.DataSource;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.jms.connection.JmsTransactionManager;
 
 import com.sysensor.app.common.config.DBConfig;
@@ -30,30 +29,15 @@ import com.sysensor.app.common.config.model.DBContext;
 public class ContextConfig {
 	private Logger log = Logger.getLogger(getClass().getName());
 
-	public final String APP_ENV;
-
 	private JMSBrokerConfig jmsBrokerConfig;
 	private DBConfig dbConfig;
 
-	public ContextConfig() {
-		APP_ENV = System.getProperty("APP_ENV");
+	@Value("${LOG_TOPIC_NAME}")
+	public String LOG_TOPIC_NAME;
 
+	public ContextConfig() {
 		jmsBrokerConfig = ActiveMqConfigImpl.getInstance();
 		dbConfig = DBConfigImpl.getInstance();
-	}
-
-	@Bean
-	public PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurer() {
-		log.info("[START:Load Application Properties]");
-
-		String propertiesFilename = "/application-" + APP_ENV + ".properties";
-
-		PropertySourcesPlaceholderConfigurer configurer = new PropertySourcesPlaceholderConfigurer();
-		configurer.setLocation(new ClassPathResource(propertiesFilename));
-		log.info("[ACTIVATE:Profile " + APP_ENV + "]");
-		log.info("[END:Load Application Properties]");
-
-		return configurer;
 	}
 
 	// *******Expose ActiveMQ Configuration******

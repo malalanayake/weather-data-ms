@@ -11,6 +11,7 @@ package com.sysensor.app.common.config.model;
  */
 public class BrokerContext {
 	public final boolean START_EMBEDDED_BROKER;
+	public final boolean ENABLE_JMS_PLAINTEXT;
 	public final String HOST_NAME;
 	public final String TCP_PORT;
 	public final String STOMP_PORT;
@@ -19,15 +20,18 @@ public class BrokerContext {
 
 	private BrokerContext(BrokerContextBuilder builder) {
 		this.START_EMBEDDED_BROKER = builder.B_START_EMBEDDED_BROKER;
+		this.ENABLE_JMS_PLAINTEXT = builder.B_ENABLE_JMS_PLAINTEXT;
 		this.HOST_NAME = builder.B_HOST_NAME;
 		this.TCP_PORT = builder.B_TCP_PORT;
 		this.STOMP_PORT = builder.B_STOMP_PORT;
 		this.USER_NAME = builder.B_USER_NAME;
 		this.PASSWORD = builder.B_PASSWORD;
+
 	}
 
 	public static class BrokerContextBuilder {
 		private boolean B_START_EMBEDDED_BROKER;
+		private boolean B_ENABLE_JMS_PLAINTEXT;
 		private String B_HOST_NAME;
 		private String B_TCP_PORT;
 		private String B_STOMP_PORT;
@@ -50,6 +54,11 @@ public class BrokerContext {
 
 		public BrokerContextBuilder startEmbeddedBroker(boolean embeddedBroker) {
 			this.B_START_EMBEDDED_BROKER = embeddedBroker;
+			return this;
+		}
+
+		public BrokerContextBuilder enableJMSPlainText(boolean enableJMSPlainText) {
+			this.B_ENABLE_JMS_PLAINTEXT = enableJMSPlainText;
 			return this;
 		}
 

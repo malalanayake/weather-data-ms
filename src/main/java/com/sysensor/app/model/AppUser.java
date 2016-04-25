@@ -29,7 +29,7 @@ public class AppUser {
 	@NotEmpty
 	@JsonView(JsonViews.AppUser.class)
 	private String userName;
-	
+
 	@JsonView(JsonViews.AppAdmin.class)
 	@NotEmpty
 	private String passWord;

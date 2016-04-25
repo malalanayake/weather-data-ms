@@ -18,5 +18,5 @@ public interface DBConfig {
 	public DBContext getDBContext();
 
 	public DataSource dataSource();
-	
+
 }
