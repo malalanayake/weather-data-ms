@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Import;
 import com.sysensor.app.config.ApplicationProfileLoad;
 import com.sysensor.app.config.ContextConfig;
 import com.sysensor.app.config.RouteConfig;
+import com.sysensor.app.config.WebSocketConfig;
 
 /**
  * 
@@ -22,7 +23,7 @@ import com.sysensor.app.config.RouteConfig;
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
-@Import({ ApplicationProfileLoad.class, ContextConfig.class, RouteConfig.class })
+@Import({ ApplicationProfileLoad.class, ContextConfig.class, RouteConfig.class, WebSocketConfig.class })
 public class ApplicationServer {
 
 	public static void main(String[] args) {

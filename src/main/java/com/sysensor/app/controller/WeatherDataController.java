@@ -1,7 +1,5 @@
 package com.sysensor.app.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.sysensor.app.config.ContextConfig;
 import com.sysensor.app.model.AppUser;
 import com.sysensor.app.repository.AppUserRepository;
 import com.sysensor.app.service.messaging.LogMessageService;
@@ -26,27 +25,25 @@ import com.sysensor.app.service.messaging.LogMessageService;
  * @blog https://malalanayake.wordpress.com/
  */
 @Controller
-@RequestMapping("/")
-public class AppUserController {
+@RequestMapping("/test")
+public class WeatherDataController {
 
 	private AppUserRepository repository;
 
 	@Autowired
+	private ContextConfig contextConfig;
+	@Autowired
 	private LogMessageService logMessageService;
 
 	@Autowired
-	public AppUserController(AppUserRepository repository) {
+	public WeatherDataController(AppUserRepository repository) {
 		this.repository = repository;
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String list(ModelMap model) {
-		List<AppUser> appUserList = repository.findAll();
-		model.addAttribute("appUserList", appUserList);
-		model.addAttribute("appUserNew", new AppUser());
-		logMessageService.publishLogs("test");
-
-		return "appUser";
+		model.addAttribute("API_KEY", contextConfig.GOOGLE_API_KEY);
+		return "weather";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)

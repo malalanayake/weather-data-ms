@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hello WebSocket</title>
-    <script src="sockjs-0.3.4.js"></script>
-    <script src="stomp.js"></script>
-    <script type="text/javascript">
+<title>Hello WebSocket</title>
+<script src="sockjs-0.3.4.js"></script>
+<script src="stomp.js"></script>
+<script src="config.js"></script>
+<script th:inline="javascript">
         var stompClient = null;
         connect();
         
@@ -12,10 +13,11 @@
             var socket = new SockJS('/hello');
             stompClient = Stomp.over(socket);            
             stompClient.connect({}, function(frame) {
+            	var topic = '/topic/'+[[${UI_LOG_TOPIC}]];
                 setConnected(true);
                 console.log('Connected: ' + frame);
-                stompClient.subscribe('/topic/greetings', function(greeting){
-                    showGreeting(JSON.parse(greeting.body).content);
+                stompClient.subscribe(topic, function(content){
+                    showGreeting(JSON.parse(content.body).message);
                 });
             }, function(message) {
             	stompClient.disconnect();
@@ -40,7 +42,7 @@
         
         function sendName() {
             var name = document.getElementById('name').value;
-            stompClient.send("/app/hello", {}, JSON.stringify({ 'name': name }));
+            stompClient.send("/app/hello", {}, JSON.stringify({ 'message': name }));
         }
         
         function showGreeting(message) {
@@ -53,18 +55,21 @@
     </script>
 </head>
 <body onload="disconnect()">
-<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being enabled. Please enable
-    Javascript and reload this page!</h2></noscript>
-<div>
-    <div>
-        <button id="connect" onclick="connect();">Connect</button>
-        <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
-    </div>
-    <div id="conversationDiv">
-        <label>What is your name?</label><input type="text" id="name" />
-        <button id="sendName" onclick="sendName();">Send</button>
-        <p id="response"></p>
-    </div>
-</div>
+	<noscript>
+		<h2 style="color: #ff0000">Seems your browser doesn't support
+			Javascript! Websocket relies on Javascript being enabled. Please
+			enable Javascript and reload this page!</h2>
+	</noscript>
+	<div>
+		<div>
+			<button id="connect" onclick="connect();">Connect</button>
+			<button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
+		</div>
+		<div id="conversationDiv">
+			<label>What is your name?</label><input type="text" id="name" />
+			<button id="sendName" onclick="sendName();">Send</button>
+			<p id="response"></p>
+		</div>
+	</div>
 </body>
 </html>

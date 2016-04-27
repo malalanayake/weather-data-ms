@@ -35,6 +35,9 @@ public class ContextConfig {
 	@Value("${LOG_TOPIC_NAME}")
 	public String LOG_TOPIC_NAME;
 
+	@Value("${GOOGLE_API_KEY}")
+	public String GOOGLE_API_KEY;
+
 	public ContextConfig() {
 		jmsBrokerConfig = ActiveMqConfigImpl.getInstance();
 		dbConfig = DBConfigImpl.getInstance();

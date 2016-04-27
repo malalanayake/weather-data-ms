@@ -1,5 +1,6 @@
 package com.sysensor.app.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -7,8 +8,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.sysensor.app.common.messaging.model.SYSContainer;
+import com.sysensor.app.config.ContextConfig;
 import com.sysensor.app.model.Greeting;
-import com.sysensor.app.model.HelloMessage;
 
 /**
  * 
@@ -22,15 +24,18 @@ import com.sysensor.app.model.HelloMessage;
 @Controller
 public class GreetingController {
 
+	@Autowired
+	private ContextConfig contextConfig;
+
 	@MessageMapping("/hello")
-	@SendTo("/topic/greetings")
-	public Greeting greeting(HelloMessage message) throws Exception {
-		Thread.sleep(3000);
-		return new Greeting("Hello, " + message.getName() + "!");
+	@SendTo("/topic/SYSENSOR.WEATHER.APP.LOG.TOPIC")
+	public Greeting greeting(SYSContainer message) throws Exception {
+		return new Greeting("Hello, " + message.getMessage() + "!");
 	}
 
 	@RequestMapping(value = "/greeting", method = RequestMethod.GET)
 	public String list(ModelMap model) {
+		model.addAttribute("UI_LOG_TOPIC", contextConfig.LOG_TOPIC_NAME);
 		return "greeting";
 	}
 
