@@ -11,7 +11,7 @@ import com.sysensor.app.common.config.model.DBContext.DBContextBuilder;
 
 /**
  * 
- * Distibution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
+ * Distribution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
  * 
  * @author dmalalan
  * @created Apr 25, 2016 7:59:40 AM
@@ -46,12 +46,10 @@ public class DBConfigImpl implements DBConfig {
 				.passWord(DATABASE_PASSWORD).build();
 	}
 
-	@Override
 	public DBContext getDBContext() {
 		return dbContext;
 	}
 
-	@Override
 	public DataSource dataSource() {
 		log.info("[START:Set DataSource]");
 		BasicDataSource basicDataSource = new BasicDataSource();

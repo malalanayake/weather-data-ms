@@ -44,6 +44,6 @@ public class AppUserRestAPI {
 		MappingJacksonValue jacksonValue = new MappingJacksonValue(appUser);
 
 		jacksonValue.setSerializationView(JsonViews.Unauthorized.class);
-		return new ResponseEntity<>(jacksonValue, HttpStatus.OK);
+		return new ResponseEntity(jacksonValue, HttpStatus.OK);
 	}
 }
