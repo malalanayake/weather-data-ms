@@ -17,7 +17,7 @@ import com.sysensor.app.common.messaging.model.SYSContainer;
 
 /**
  * 
- * Distibution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
+ * Distribution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
  * 
  * @author dmalalan
  * @created Apr 25, 2016 8:00:14 AM
@@ -37,7 +37,6 @@ public class SYSContainerMessageServiceImpl implements MessageService<SYSContain
 	@Autowired
 	ObjectMapper mapper;
 
-	@Override
 	public void pushToQueue(String queueName, SYSContainer type) {
 		StringBuilder json = new StringBuilder();
 		Destination activeMQQueue = new ActiveMQQueue(queueName);
@@ -55,7 +54,6 @@ public class SYSContainerMessageServiceImpl implements MessageService<SYSContain
 		}
 	}
 
-	@Override
 	public void pushToTopic(String topicName, SYSContainer type) {
 		StringBuilder json = new StringBuilder();
 		Destination activeMQTopic = new ActiveMQTopic(topicName);

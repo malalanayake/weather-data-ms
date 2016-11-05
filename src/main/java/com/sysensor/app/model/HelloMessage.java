@@ -2,7 +2,7 @@ package com.sysensor.app.model;
 
 /**
  * 
- * Distibution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
+ * Distribution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
  * 
  * @author dmalalan
  * @created Feb 22, 2016 11:40:50 PM

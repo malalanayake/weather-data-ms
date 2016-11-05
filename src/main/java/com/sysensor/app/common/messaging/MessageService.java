@@ -2,7 +2,7 @@ package com.sysensor.app.common.messaging;
 
 /**
  * 
- * Distibution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
+ * Distribution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
  * 
  * @author dmalalan
  * @created Apr 25, 2016 8:00:02 AM

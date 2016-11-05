@@ -12,7 +12,7 @@ import com.sysensor.app.common.config.model.BrokerContext;
 
 /**
  * 
- * Distibution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
+ * Distribution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
  * 
  * @author dmalalan
  * @created Feb 22, 2016 11:39:22 PM

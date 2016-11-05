@@ -17,6 +17,7 @@ import org.springframework.jms.connection.JmsTransactionManager;
 import com.sysensor.app.common.config.JMSBrokerConfig;
 import com.sysensor.app.common.config.model.BrokerContext;
 import com.sysensor.app.common.config.model.BrokerContext.BrokerContextBuilder;
+import org.springframework.stereotype.Component;
 
 /**
  * Distribution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
@@ -25,6 +26,7 @@ import com.sysensor.app.common.config.model.BrokerContext.BrokerContextBuilder;
  * @created Apr 22, 2016 1:26:04 PM
  * @blog https://malalanayake.wordpress.com/
  */
+@Component
 public class ActiveMqConfigImpl implements JMSBrokerConfig {
     private Logger log = Logger.getLogger(getClass().getName());
 
@@ -41,17 +43,7 @@ public class ActiveMqConfigImpl implements JMSBrokerConfig {
     private final String ACTIVEMQ_USER_NAME;
     private final String ACTIVEMQ_PASSWORD;
 
-    private static JMSBrokerConfig jmsBrokerConfig = null;
-
-    public static JMSBrokerConfig getInstance() {
-        if (jmsBrokerConfig != null) {
-            return jmsBrokerConfig;
-        } else {
-            return new ActiveMqConfigImpl();
-        }
-    }
-
-    private ActiveMqConfigImpl() {
+    public ActiveMqConfigImpl() {
 
         START_EMBEDDED_BROKER = Boolean.valueOf(System.getProperty("START_EMBEDDED_BROKER"));
         ENABLE_JMS_PLAINTEXT = Boolean.valueOf(System.getProperty("ENABLE_JMS_PLAINTEXT"));

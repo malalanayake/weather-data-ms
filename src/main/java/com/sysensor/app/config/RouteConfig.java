@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * 
- * Distibution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
+ * Distribution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
  * 
  * @author dmalalan
  * @created Apr 25, 2016 8:01:58 AM

@@ -1,25 +1,23 @@
 package com.sysensor.app.config;
 
-import javax.jms.ConnectionFactory;
-import javax.sql.DataSource;
-
+import com.sysensor.app.common.config.DBConfig;
+import com.sysensor.app.common.config.JMSBrokerConfig;
+import com.sysensor.app.common.config.model.BrokerContext;
+import com.sysensor.app.common.config.model.DBContext;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.connection.JmsTransactionManager;
 
-import com.sysensor.app.common.config.DBConfig;
-import com.sysensor.app.common.config.JMSBrokerConfig;
-import com.sysensor.app.common.config.impl.ActiveMqConfigImpl;
-import com.sysensor.app.common.config.impl.DBConfigImpl;
-import com.sysensor.app.common.config.model.BrokerContext;
-import com.sysensor.app.common.config.model.DBContext;
+import javax.jms.ConnectionFactory;
+import javax.sql.DataSource;
 
 /**
  * 
- * Distibution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
- * 
+ * Distribution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
+ *
  * @author dmalalan
  * @created Apr 22, 2016 1:26:04 PM
  * 
@@ -29,7 +27,9 @@ import com.sysensor.app.common.config.model.DBContext;
 public class ContextConfig {
 	private Logger log = Logger.getLogger(getClass().getName());
 
+	@Autowired
 	private JMSBrokerConfig jmsBrokerConfig;
+	@Autowired
 	private DBConfig dbConfig;
 
 	@Value("${LOG_TOPIC_NAME}")
@@ -38,10 +38,6 @@ public class ContextConfig {
 	@Value("${GOOGLE_API_KEY}")
 	public String GOOGLE_API_KEY;
 
-	public ContextConfig() {
-		jmsBrokerConfig = ActiveMqConfigImpl.getInstance();
-		dbConfig = DBConfigImpl.getInstance();
-	}
 
 	// *******Expose ActiveMQ Configuration******
 	@Bean

@@ -18,7 +18,7 @@ import com.sysensor.app.service.messaging.LogMessageService;
 
 /**
  * 
- * Distibution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
+ * Distribution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
  * 
  * @author malalanayake
  * @created Nov 8, 2015 7:34:51 PM

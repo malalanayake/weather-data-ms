@@ -13,7 +13,7 @@ import com.sysensor.app.config.WebSocketConfig;
 
 /**
  * 
- * Distibution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
+ * Distribution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
  * 
  * @author dmalalan
  * @created Apr 22, 2016 1:25:29 PM

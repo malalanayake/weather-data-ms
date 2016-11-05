@@ -7,7 +7,7 @@ import org.springframework.core.io.ClassPathResource;
 
 /**
  * 
- * Distibution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
+ * Distribution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
  * 
  * @author dmalalan
  * @created Apr 25, 2016 8:16:49 AM

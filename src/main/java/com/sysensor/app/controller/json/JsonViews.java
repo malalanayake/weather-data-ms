@@ -2,7 +2,7 @@ package com.sysensor.app.controller.json;
 
 /**
  * 
- * Distibution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
+ * Distribution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
  * 
  * @author dmalalan
  * @created Apr 18, 2016 12:52:23 PM

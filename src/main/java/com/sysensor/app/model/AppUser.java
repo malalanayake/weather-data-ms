@@ -12,7 +12,7 @@ import com.sysensor.app.controller.json.JsonViews;
 
 /**
  * 
- * Distibution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
+ * Distribution under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
  * 
  * @author malalanayake
  * @created Nov 8, 2015 7:32:28 PM
